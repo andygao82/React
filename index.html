@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <style>
+        .page-title{
+            color: magenta;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // const Hello = ({library, message}) =>{
+        //     return(
+        //         <div className="page-title">
+        //             <h1>Welcome to {library}</h1>
+        //             <h2>{message}</h2>
+        //         </div>
+        //     )
+        // };
+
+        const Lake = ({name}) => <h1>{name}</h1>;
+        const SkiResort = ({name}) => <h1>{name}</h1>;
+
+        const lakeList = [
+            {id: 1, name: "Nan Lake", trailhead: "Nan Lake"},
+            {id: 2, name: "Hun Lake", trailhead: "Hun Lake"},
+        ];
+
+        // const App = () => {
+        //   return(
+        //       <div>
+        //           <Lake name="Nan Lake"/>
+        //           <Lake name="Hun Lake"/>
+        //       </div>
+        //   )
+        // };
+        // const App2 = ({summer}) => {
+        //   return(
+        //       <div>
+        //           {summer
+        //               ? <Lake name="Lake"/>
+        //               : <SkiResort name="SkiResort"/>}
+        //       </div>
+        //   )
+        // };
+        const App3 = ({lakes}) => {
+            return(
+                <ul>
+                    {lakes.map((lake, i) =>
+                        <li key={lake.id}>{lake.name} | Trailhead: {lake.trailhead}</li>
+                    )}
+                </ul>
+            )
+        };
+        //class App extends React.Component{
+            //state = {
+                //loggedIn: false
+            //}
+            //logIn = () => this.setState({loggedIn: true})
+            //logOut = () => this.setState({loggedIn: false})
+           // render(){
+           //     return(
+           //         <div>
+            //            <button onClick={this.logIn}>Log In</button>
+           //             <button onClick={this.logOut}>Log Out</button>
+           //             <div>The User is {
+            //                this.state.loggedIn
+            //                    ? "logged in"
+           //                     : "not logged it"}
+
+            //            </div>
+            //            <Lake name="Nan Lake"/>
+             //           <Lake name="Hun Lake"/>
+            //       </div>
+             //   )
+            //}
+      //  }
+
+        ReactDOM.render(
+            //<Hello library = "React" message="Enjoy it"/>,
+            //<App />,
+            //<App2 summer={true} />,
+            <App3 lakes = {lakeList} />,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>
